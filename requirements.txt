@@ -2,3 +2,4 @@ google-generativeai
 openai
 python-dotenv
 telegram
+schedule

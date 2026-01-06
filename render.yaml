@@ -1,0 +1,26 @@
+services:
+  # 1. The Brain: Python Agents running 24/7
+  - type: worker
+    name: mumega-marketing-agents
+    env: python
+    region: ohio # or your preferred region
+    plan: free # Start on free/starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: python src/main.py
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false # User must provide
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: GH_PAT
+        sync: false
+      - key: TWITTER_API_KEY
+        sync: false
+      - key: TWITTER_API_SECRET
+        sync: false
+
+# Optional: If we want to serve the raw content directly
+# - type: web
+#   name: mumega-marketing-content
+#   env: static
+#   staticPublishPath: ./content
