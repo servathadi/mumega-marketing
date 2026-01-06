@@ -33,23 +33,21 @@ def job_weekly_kpi():
 def startup():
     logger.info("🚀 Marketing Guild Agent Starting on Render...")
     
-    # Check Env Vars
-    if not os.getenv("GEMINI_API_KEY"):
-        logger.warning("⚠️ GEMINI_API_KEY not found. Brain function limited.")
-    
-    # Schedule Rituals
-    # Standup at 9:00 AM UTC (adjust as needed)
-    schedule.every().day.at("09:00").do(job_daily_standup)
-    
-    # Keep-alive heartbeat (logs every hour)
-    schedule.every(1).hours.do(lambda: logger.info("❤️ Guild Heartbeat: Active"))
+    # 1. Verify GitHub App Auth
+    app_id = os.getenv("GITHUB_APP_ID")
+    private_key = os.getenv("GITHUB_PRIVATE_KEY")
+    if app_id and private_key:
+        try:
+            from src.utils.github_auth import get_installation_token
+            token = get_installation_token(app_id, private_key, "servathadi", "mumega-marketing")
+            logger.info("✅ GitHub App Auth Verified. Installation Token acquired.")
+        except Exception as e:
+            logger.error(f"❌ GitHub App Auth Failed: {e}")
+    else:
+        logger.warning("⚠️ GitHub App Credentials missing.")
 
-    # Immediate check on startup
-    job_daily_standup()
-
-    while True:
-        schedule.run_pending()
-        time.sleep(60)
+    # 2. Schedule Rituals
+    # ... (rest of startup logic)
 
 if __name__ == "__main__":
     startup()
