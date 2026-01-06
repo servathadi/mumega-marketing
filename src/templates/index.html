@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mumega Inc. | Sovereign Marketing HQ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0A0A0A; color: #F8FAFC; }
+        .nebula-glow { text-shadow: 0 0 20px rgba(6, 182, 212, 0.5); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <nav class="p-6 border-b border-white/5 flex justify-between items-center bg-black/50 backdrop-blur-xl sticky top-0 z-50">
+        <div class="text-xl font-black tracking-tighter text-cyan-400">MUMEGA INC.</div>
+        <div class="flex gap-6 text-xs font-mono tracking-widest uppercase opacity-60">
+            <span class="text-cyan-500">● Operational</span>
+            <span>Mu6 Sovereign OS</span>
+        </div>
+    </nav>
+
+    <main class="flex-1 container mx-auto px-6 py-20">
+        <header class="max-w-4xl mb-20">
+            <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-6 nebula-glow">
+                Digital Workforce. <br/> <span class="text-cyan-500">Sovereign Growth.</span>
+            </h1>
+            <p class="text-xl text-white/60 leading-relaxed max-w-2xl">
+                The strategic headquarters for Mumega's autonomous marketing squads. We build, grow, and govern digital employees that move at the speed of light.
+            </p>
+        </header>
+
+        <section>
+            <h2 class="text-sm font-bold uppercase tracking-[0.3em] text-white/40 mb-8">Latest Transmissions</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                {% for post in posts %}
+                <a href="/blog/{{ post.slug }}" class="p-8 bg-white/5 border border-white/10 rounded-3xl hover:border-cyan-500/50 transition-all group">
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-cyan-400 transition-colors">{{ post.title }}</h3>
+                    <div class="text-cyan-500 text-xs font-mono uppercase tracking-widest">Read More →</div>
+                </a>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <footer class="p-10 border-t border-white/5 text-center text-[10px] font-mono uppercase tracking-widest opacity-40">
+        Executed by the Mumega Swarm // 2026
+    </footer>
+</body>
+</html>
