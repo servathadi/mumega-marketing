@@ -3,3 +3,6 @@ openai
 python-dotenv
 telegram
 schedule
+pyjwt
+cryptography
+requests

@@ -12,7 +12,9 @@ services:
         sync: false # User must provide
       - key: TELEGRAM_BOT_TOKEN
         sync: false
-      - key: GH_PAT
+      - key: GITHUB_APP_ID
+        sync: false
+      - key: GITHUB_PRIVATE_KEY
         sync: false
       - key: TWITTER_API_KEY
         sync: false
